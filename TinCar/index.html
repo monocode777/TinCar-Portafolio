@@ -1,0 +1,704 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TinCar - Parqueaderos Inteligentes</title>
+    <link rel="icon" href="images/LogoTincarACT.jpg">
+    
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Playfair+Display:ital,wght@0,400..900;1,400..900&display=swap" rel="stylesheet">
+    
+    <!-- Estilos personalizados -->
+    <style>
+        :root {
+            --sunrise-yellow: #FFD166;      /* Amarillo amanecer suave */
+            --vibrant-orange: #FF9E58;      /* Naranja vibrante */
+            --warm-amber: #FFB347;          /* Ámbar cálido */
+            --deep-orange: #FF8C42;         /* Naranja profundo */
+            --soft-cream: #FFF9F0;          /* Crema suave para fondos */
+            --pure-white: #FFFFFF;          /* Blanco puro */
+            --charcoal: #2D3748;            /* Carbón para texto */
+            --dark-gray: #4A5568;           /* Gris oscuro */
+            --gradient-sunrise: linear-gradient(135deg, #FFD166 0%, #FF9E58 100%);
+            --gradient-sunset: linear-gradient(135deg, #FF9E58 0%, #FF8C42 100%);
+            --gradient-warm: linear-gradient(135deg, #FFB347 0%, #FF8C42 100%);
+            --gradient-light: linear-gradient(135deg, #FFF9F0 0%, #FFFFFF 100%);
+        }
+        
+        body {
+            font-family: 'Inter', sans-serif;
+            background: var(--gradient-light);
+            color: var(--charcoal);
+            line-height: 1.6;
+        }
+        
+        .navbar {
+            background: var(--pure-white) !important;
+            box-shadow: 0 4px 20px rgba(255, 158, 88, 0.15);
+            padding: 1rem 0;
+            backdrop-filter: blur(10px);
+        }
+        
+        .navbar-brand {
+            font-weight: 800;
+            font-size: 1.8rem;
+            color: var(--charcoal) !important;
+        }
+        
+        .nav-link {
+            font-weight: 600;
+            color: var(--dark-gray) !important;
+            transition: all 0.3s ease;
+            margin: 0 0.5rem;
+            position: relative;
+        }
+        
+        .nav-link:hover {
+            color: var(--deep-orange) !important;
+        }
+        
+        .nav-link.active {
+            color: var(--deep-orange) !important;
+            font-weight: 700;
+        }
+        
+        .nav-link.active::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 100%;
+            height: 3px;
+            background: var(--gradient-sunset);
+            border-radius: 2px;
+        }
+        
+        .dropdown-menu {
+            border: none;
+            box-shadow: 0 10px 30px rgba(255, 158, 88, 0.2);
+            border-radius: 12px;
+            border: 1px solid rgba(255, 158, 88, 0.1);
+        }
+        
+        .dropdown-item {
+            font-weight: 500;
+            padding: 0.75rem 1.5rem;
+            transition: all 0.3s ease;
+            color: var(--charcoal);
+        }
+        
+        .dropdown-item:hover {
+            background: var(--soft-cream);
+            color: var(--deep-orange);
+            transform: translateX(5px);
+        }
+        
+        .hero-section {
+            position: relative;
+            height: 85vh;
+            overflow: hidden;
+            background: var(--gradient-sunrise);
+        }
+        
+        .hero-image {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            opacity: 0.1;
+        }
+        
+        .hero-content {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            text-align: center;
+            color: var(--charcoal);
+            width: 80%;
+        }
+        
+        .hero-title {
+            font-family: 'Playfair Display', serif;
+            font-size: 4rem;
+            font-weight: 800;
+            margin-bottom: 1.5rem;
+        }
+        
+        .hero-highlight {
+            background: var(--gradient-sunset);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+            font-weight: 800;
+        }
+        
+        .hero-subtitle {
+            font-size: 1.3rem;
+            margin-bottom: 2.5rem;
+            max-width: 700px;
+            margin-left: auto;
+            margin-right: auto;
+            font-weight: 500;
+            color: var(--charcoal);
+            opacity: 0.9;
+        }
+        
+        .hero-quote {
+            font-size: 1.5rem;
+            font-style: italic;
+            color: var(--charcoal);
+            margin-top: 2rem;
+            font-weight: 600;
+            opacity: 0.8;
+        }
+        
+        .section-title {
+            font-family: 'Playfair Display', serif;
+            color: var(--charcoal);
+            font-weight: 800;
+            margin-bottom: 2rem;
+            position: relative;
+            padding-bottom: 15px;
+        }
+        
+        .section-title:after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 80px;
+            height: 4px;
+            background: var(--gradient-sunset);
+            border-radius: 2px;
+        }
+        
+        .section-title.text-center:after {
+            left: 50%;
+            transform: translateX(-50%);
+        }
+        
+        .content-card {
+            background-color: var(--pure-white);
+            border-radius: 20px;
+            box-shadow: 0 10px 40px rgba(255, 158, 88, 0.1);
+            padding: 2.5rem;
+            margin-bottom: 2rem;
+            transition: all 0.4s ease;
+            border: 1px solid rgba(255, 158, 88, 0.1);
+        }
+        
+        .content-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 20px 50px rgba(255, 158, 88, 0.15);
+        }
+        
+        .feature-image {
+            border-radius: 20px;
+            box-shadow: 0 15px 40px rgba(255, 158, 88, 0.2);
+            transition: all 0.4s ease;
+            border: 4px solid var(--pure-white);
+        }
+        
+        .feature-image:hover {
+            transform: scale(1.03);
+            box-shadow: 0 20px 50px rgba(255, 158, 88, 0.3);
+        }
+        
+        .btn-custom {
+            background: var(--gradient-sunset);
+            color: var(--pure-white);
+            border: none;
+            padding: 0.75rem 2rem;
+            border-radius: 50px;
+            font-weight: 700;
+            transition: all 0.3s ease;
+            box-shadow: 0 6px 20px rgba(255, 140, 66, 0.3);
+        }
+        
+        .btn-custom:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 25px rgba(255, 140, 66, 0.4);
+            color: var(--pure-white);
+        }
+        
+        .btn-outline-custom {
+            background: transparent;
+            color: var(--charcoal);
+            border: 2px solid var(--charcoal);
+            padding: 0.75rem 2rem;
+            border-radius: 50px;
+            font-weight: 600;
+            transition: all 0.3s ease;
+        }
+        
+        .btn-outline-custom:hover {
+            background: var(--charcoal);
+            color: var(--pure-white);
+            transform: translateY(-3px);
+        }
+        
+        .footer {
+            background: var(--charcoal);
+            padding: 4rem 0 2rem;
+            color: var(--pure-white);
+        }
+        
+        .footer-title {
+            font-family: 'Playfair Display', serif;
+            color: var(--pure-white);
+            font-weight: 700;
+            margin-bottom: 1.5rem;
+            font-size: 1.3rem;
+        }
+        
+        .footer-link {
+            color: rgba(255, 255, 255, 0.85);
+            text-decoration: none;
+            transition: all 0.3s ease;
+            display: block;
+            margin-bottom: 0.5rem;
+            font-weight: 500;
+        }
+        
+        .footer-link:hover {
+            color: var(--sunrise-yellow);
+            text-decoration: none;
+            transform: translateX(5px);
+        }
+        
+        .social-icons a {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            margin-right: 15px;
+            color: var(--pure-white);
+            font-size: 1.5rem;
+            width: 45px;
+            height: 45px;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.1);
+            transition: all 0.3s ease;
+        }
+        
+        .social-icons a:hover {
+            background: var(--gradient-sunset);
+            color: var(--pure-white);
+            transform: translateY(-5px);
+        }
+        
+        .map-container {
+            border-radius: 20px;
+            overflow: hidden;
+            box-shadow: 0 15px 40px rgba(255, 158, 88, 0.15);
+            border: 4px solid var(--pure-white);
+        }
+        
+        .newsletter-input {
+            border: 2px solid rgba(255, 255, 255, 0.3);
+            border-radius: 50px;
+            padding: 0.75rem 1.5rem;
+            background: rgba(255, 255, 255, 0.1);
+            color: var(--pure-white);
+            font-weight: 500;
+        }
+        
+        .newsletter-input::placeholder {
+            color: rgba(255, 255, 255, 0.7);
+        }
+        
+        .newsletter-input:focus {
+            background: rgba(255, 255, 255, 0.2);
+            border-color: var(--sunrise-yellow);
+            color: var(--pure-white);
+            box-shadow: 0 0 0 3px rgba(255, 209, 102, 0.1);
+        }
+        
+        .stat-number {
+            font-size: 2.5rem;
+            font-weight: 800;
+            color: var(--deep-orange);
+            display: block;
+        }
+        
+        .stat-label {
+            font-size: 1rem;
+            color: var(--dark-gray);
+            font-weight: 600;
+        }
+        
+        .benefit-item {
+            display: flex;
+            align-items: flex-start;
+            margin-bottom: 1.5rem;
+        }
+        
+        .benefit-icon {
+            background: var(--gradient-sunrise);
+            color: var(--charcoal);
+            width: 60px;
+            height: 60px;
+            border-radius: 15px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-right: 1.5rem;
+            flex-shrink: 0;
+            font-size: 1.5rem;
+        }
+        
+        .divider {
+            height: 2px;
+            background: linear-gradient(90deg, transparent, var(--vibrant-orange), transparent);
+            margin: 3rem 0;
+        }
+        
+        .testimonial-card {
+            background: var(--pure-white);
+            border-radius: 16px;
+            padding: 2rem;
+            box-shadow: 0 8px 30px rgba(255, 158, 88, 0.1);
+            border-left: 4px solid var(--vibrant-orange);
+            transition: all 0.3s ease;
+        }
+        
+        .testimonial-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 40px rgba(255, 158, 88, 0.15);
+        }
+        
+        .testimonial-text {
+            font-style: italic;
+            color: var(--dark-gray);
+            margin-bottom: 1.5rem;
+            font-size: 1.1rem;
+        }
+        
+        .testimonial-author {
+            font-weight: 700;
+            color: var(--charcoal);
+        }
+        
+        .floating-shape {
+            position: absolute;
+            width: 200px;
+            height: 200px;
+            background: var(--gradient-sunrise);
+            border-radius: 50%;
+            opacity: 0.1;
+            z-index: 0;
+        }
+        
+        .shape-1 {
+            top: 10%;
+            left: 5%;
+            width: 150px;
+            height: 150px;
+        }
+        
+        .shape-2 {
+            bottom: 20%;
+            right: 10%;
+            width: 120px;
+            height: 120px;
+            background: var(--gradient-sunset);
+        }
+        
+        @media (max-width: 768px) {
+            .hero-title {
+                font-size: 2.8rem;
+            }
+            
+            .hero-subtitle {
+                font-size: 1.1rem;
+            }
+            
+            .content-card {
+                padding: 1.5rem;
+            }
+            
+            .benefit-icon {
+                width: 50px;
+                height: 50px;
+                font-size: 1.2rem;
+                margin-right: 1rem;
+            }
+            
+            .floating-shape {
+                display: none;
+            }
+        }
+    </style>
+</head>  
+
+<body>
+    <!-- Header y Navegación -->
+    <header>
+        <nav class="navbar navbar-expand-lg sticky-top">
+            <div class="container">
+                <a class="navbar-brand d-flex align-items-center" href="index.html">
+                    <img src="images/LogoTincarACT.jpg" alt="TinCar Logo" width="50" height="50" class="me-2 rounded-circle">
+                    <span>TinCar</span>
+                </a>
+                
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                
+                <div class="collapse navbar-collapse" id="navbarNav">
+                    <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                        <li class="nav-item">
+                            <a class="nav-link active" aria-current="page" href="index.html">Inicio</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#parqueadero">Parqueaderos</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#beneficios">Beneficios</a>
+                        </li>
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                Semestres
+                            </a>
+                            <ul class="dropdown-menu">
+                                <li><a class="dropdown-item" href="primero.html">Primer Semestre</a></li>
+                                <li><a class="dropdown-item" href="segundo.html">Segundo Semestre</a></li>
+                                <li><a class="dropdown-item" href="tercero.html">Tercer Semestre</a></li>
+                                <li><a class="dropdown-item" href="cuarto.html">Cuarto Semestre</a></li>
+                                <li><a class="dropdown-item" href="quinto.html">Quinto Semestre</a></li>
+                                <li><a class="dropdown-item" href="sexto.html">Sexto Semestre</a></li>
+                            </ul>
+                        </li>
+                    </ul>
+                    
+                    <div class="d-flex gap-3">
+                        <a href="servicios.html" class="btn btn-custom">Servicios</a>
+                        <a href="betincar.html" class="btn btn-outline-custom">Be TinCar</a>
+                    </div>
+                </div>
+            </div>
+        </nav>
+
+        <!-- Hero Section -->
+        <div class="hero-section">
+            <div class="floating-shape shape-1"></div>
+            <div class="floating-shape shape-2"></div>
+            <img src="images/parqueaderooriginal.png" class="hero-image" alt="Parqueadero TinCar">
+            <div class="hero-content">
+                <h1 class="hero-title">Estacionamiento <span class="hero-highlight">Inteligente</span></h1>
+                <p class="hero-subtitle">TinCar transforma la movilidad urbana conectando conductores con espacios de parqueo cercanos y seguros. Reserva en segundos, evita congestiones y ayuda a mantener las calles libres mientras generas ingresos compartiendo tu espacio.</p>
+                <div class="mt-4">
+                    <a href="#parqueadero" class="btn btn-custom btn-lg me-3">Encontrar Parqueadero</a>
+                    <a href="#beneficios" class="btn btn-outline-custom btn-lg">Conocer Más</a>
+                </div>
+                <p class="hero-quote">"Cuidamos tu tranquilidad en casa"</p>
+            </div>
+        </div>
+    </header>
+
+    <!-- Contenido Principal -->
+    <main class="py-5 position-relative">
+        <div class="container">
+            <!-- Estadísticas -->
+            <div class="row text-center mb-5">
+                <div class="col-md-3 col-6 mb-4">
+                    <span class="stat-number">500+</span>
+                    <span class="stat-label">Espacios Premium</span>
+                </div>
+                <div class="col-md-3 col-6 mb-4">
+                    <span class="stat-number">2.5K+</span>
+                    <span class="stat-label">Clientes Satisfechos</span>
+                </div>
+                <div class="col-md-3 col-6 mb-4">
+                    <span class="stat-number">15+</span>
+                    <span class="stat-label">Zonas Exclusivas</span>
+                </div>
+                <div class="col-md-3 col-6 mb-4">
+                    <span class="stat-number">24/7</span>
+                    <span class="stat-label">Soporte Premium</span>
+                </div>
+            </div>
+
+            <!-- Objetivo General -->
+            <div class="content-card">
+                <h2 class="section-title text-center">Excelencia en Movilidad Urbana</h2>
+                <p class="text-center fs-5">En TinCar creemos que la excelencia en movilidad urbana se construye compartiendo espacios, evitando el caos vial y promoviendo una ciudad más ágil, ordenada y sostenible.</p>
+            </div>
+
+            <div class="divider"></div>
+
+            <!-- Beneficios -->
+            <div id="beneficios" class="row align-items-center mb-5">
+                <div class="col-lg-6 mb-4 mb-lg-0">
+                    <div class="content-card">
+                        <h2 class="section-title">La Experiencia TinCar</h2>
+                        
+                        <div class="benefit-item">
+                            <div class="benefit-icon">
+                                <i class="bi bi-shield-check"></i>
+                            </div>
+                            <div>
+                                <h5>Seguridad Garantizada</h5>
+                                <p class="mb-0">Espacios vigilados 24/7 con sistemas de seguridad de última generación y monitoreo en tiempo real.</p>
+                            </div>
+                        </div>
+                        
+                        <div class="benefit-item">
+                            <div class="benefit-icon">
+                                <i class="bi bi-geo-alt"></i>
+                            </div>
+                            <div>
+                                <h5>Ubicaciones Estratégicas</h5>
+                                <p class="mb-0">Accede a las zonas más exclusivas y mejor conectadas de la ciudad, cerca de tus destinos principales.</p>
+                            </div>
+                        </div>
+                        
+                        <div class="benefit-item">
+                            <div class="benefit-icon">
+                                <i class="bi bi-clock"></i>
+                            </div>
+                            <div>
+                                <h5>Reservas Instantáneas</h5>
+                                <p class="mb-0">Garantiza tu espacio en tiempo real desde nuestra aplicación intuitiva y de respuesta inmediata.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-6 text-center">
+                    <img src="images/LogoTinCarNegro.JPG" alt="Parqueadero TinCar" class="img-fluid feature-image">
+                </div>
+            </div>
+
+            <!-- Testimonios -->
+            <div class="row mb-5">
+                <div class="col-12">
+                    <h2 class="section-title text-center">Lo Que Dicen Nuestros Clientes</h2>
+                </div>
+                <div class="col-md-4 mb-4">
+                    <div class="testimonial-card h-100">
+                        <div class="testimonial-text">
+                            "TinCar ha transformado completamente mi experiencia de estacionamiento en la ciudad. Los espacios son impecables y el servicio es excepcional."
+                        </div>
+                        <div class="testimonial-author">- María González</div>
+                    </div>
+                </div>
+                <div class="col-md-4 mb-4">
+                    <div class="testimonial-card h-100">
+                        <div class="testimonial-text">
+                            "La aplicación es intuitiva y los parqueaderos siempre están en perfectas condiciones. Vale cada peso invertido en comodidad y seguridad."
+                        </div>
+                        <div class="testimonial-author">- Carlos Rodríguez</div>
+                    </div>
+                </div>
+                <div class="col-md-4 mb-4">
+                    <div class="testimonial-card h-100">
+                        <div class="testimonial-text">
+                            "Como usuario frecuente, aprecio la consistencia y calidad del servicio. TinCar supera todas mis expectativas cada vez."
+                        </div>
+                        <div class="testimonial-author">- Ana Martínez</div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Presentación del Proyecto -->
+            <div class="content-card">
+                <h2 class="section-title">Tecnología de Vanguardia</h2>
+                <p>TinCar representa la evolución del estacionamiento urbano. Nuestra plataforma combina diseño elegante con tecnología avanzada para ofrecer una experiencia sin igual. Desarrollamos soluciones inteligentes que priorizan la seguridad, comodidad y estilo, utilizando machine learning para predecir disponibilidad y optimizar rutas.</p>
+                <div class="row mt-4">
+                    <div class="col-md-6">
+                        <h5><i class="bi bi-phone me-2" style="color: var(--deep-orange);"></i>Aplicación Intuitiva</h5>
+                        <p>Interfaz elegante y funcional diseñada para una experiencia de usuario excepcional en cualquier dispositivo.</p>
+                    </div>
+                    <div class="col-md-6">
+                        <h5><i class="bi bi-shield-lock me-2" style="color: var(--deep-orange);"></i>Privacidad Total</h5>
+                        <p>Tus datos y transacciones protegidos con cifrado de nivel empresarial y protocolos de seguridad avanzados.</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Mapa -->
+            <div id="parqueadero" class="mt-5">
+                <h2 class="section-title text-center mb-4">Nuestras Ubicaciones Exclusivas</h2>
+                <div class="map-container">
+                    <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2852.6514044017063!2d-74.03274447502037!3d4.75102319522418!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x8e3f8f7df50575cd%3A0xd21bdff9aaaa136!2sUniversidad%20De%20San%20Buenaventura%2C%20Bogot%C3%A1!5e1!3m2!1ses-419!2sco!4v1744304020167!5m2!1ses-419!2sco" width="100%" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-3 col-md-6 mb-4">
+                    <h5 class="footer-title">TINCAR</h5>
+                    <p class="mb-3">Revolucionando el estacionamiento urbano con tecnología inteligente y servicio excepcional para una experiencia sin igual.</p>
+                    <a href="nosotros.html" class="footer-link">Conoce Más</a>
+                </div>
+                
+                <div class="col-lg-3 col-md-6 mb-4">
+                    <h5 class="footer-title">SEMESTRES</h5>
+                    <a href="primero.html" class="footer-link">Primer Semestre</a>
+                    <a href="segundo.html" class="footer-link">Segundo Semestre</a>
+                    <a href="tercero.html" class="footer-link">Tercer Semestre</a>
+                    <a href="cuarto.html" class="footer-link">Cuarto Semestre</a>
+                    <a href="quinto.html" class="footer-link">Quinto Semestre</a>
+                    <a href="sexto.html" class="footer-link">Sexto Semestre</a>
+                </div>
+                
+                <div class="col-lg-3 col-md-6 mb-4">
+                    <h5 class="footer-title">LEGAL</h5>
+                    <a href="privacidad.html" class="footer-link">Política de Privacidad</a>
+                    <a href="poliarrendamiento.html" class="footer-link">Términos de Servicio</a>
+                    <a href="terminosycondiciones.html" class="footer-link">Condiciones de Uso</a>
+                </div>
+                
+                <div class="col-lg-3 col-md-6 mb-4">
+                    <h5 class="footer-title">NEWSLETTER</h5>
+                    <p class="mb-3">Recibe ofertas exclusivas y novedades sobre nuevos parqueaderos disponibles en tu zona.</p>
+                    <div class="mb-3">
+                        <input type="email" class="form-control newsletter-input" placeholder="tu@email.com">
+                    </div>
+                    <button class="btn btn-custom w-100">Suscribirse</button>
+                </div>
+            </div>
+            
+            <hr class="my-4" style="border-color: rgba(255,255,255,0.2);">
+            
+            <div class="row align-items-center">
+                <div class="col-md-6 mb-3 mb-md-0">
+                    <div class="social-icons text-center text-md-start">
+                        <a href="https://www.instagram.com/tin.car_/?igsh=cTJnOHp3ZmxoZWgy#" aria-label="Instagram">
+                            <i class="bi bi-instagram"></i>
+                        </a>
+                        <a href="https://www.whatsapp.com/?lang=es_LA" aria-label="WhatsApp">
+                            <i class="bi bi-whatsapp"></i>
+                        </a>
+                        <a href="https://github.com/kaparepennn/TinCar.git" aria-label="GitHub">
+                            <i class="bi bi-github"></i>
+                        </a>
+                        <a href="#" aria-label="Facebook">
+                            <i class="bi bi-facebook"></i>
+                        </a>
+                    </div>
+                </div>
+                <div class="col-md-6 text-center text-md-end">
+                    <p class="mb-0">TinCar © 2025. Innovación en cada espacio, confianza en cada reserva.</p>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Bootstrap JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+    
+    <!-- Bootstrap Icons -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css">
+</body>
+</html>

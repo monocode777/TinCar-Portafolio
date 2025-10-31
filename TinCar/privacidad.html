@@ -1,0 +1,594 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Política de Privacidad - TinCar</title>
+    <link rel="icon" href="images/LogoTincarACT.jpg">
+    
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    
+    <!-- Bootstrap Icons -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css">
+    
+    <!-- Estilos personalizados -->
+    <style>
+        :root {
+            --primary-yellow: #FFD166;
+            --dark-yellow: #7e5316;
+            --light-yellow: #f4d185;
+            --cream: #f7f5ee;
+            --charcoal: #2D3748;
+        }
+        
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: var(--cream);
+            color: var(--charcoal);
+            line-height: 1.6;
+        }
+        
+        .navbar {
+            background: linear-gradient(135deg, var(--primary-yellow) 0%, var(--light-yellow) 100%) !important;
+            box-shadow: 0 4px 12px rgba(126, 83, 22, 0.15);
+        }
+        
+        .navbar-brand {
+            font-weight: 700;
+            font-size: 1.5rem;
+            color: var(--dark-yellow) !important;
+        }
+        
+        .nav-link {
+            font-weight: 600;
+            color: var(--dark-yellow) !important;
+            transition: all 0.3s ease;
+            margin: 0 0.5rem;
+        }
+        
+        .nav-link:hover {
+            color: var(--charcoal) !important;
+            transform: translateY(-2px);
+        }
+        
+        .btn-tincar {
+            background: var(--dark-yellow);
+            color: white;
+            border: none;
+            padding: 0.6rem 1.5rem;
+            border-radius: 50px;
+            font-weight: 600;
+            transition: all 0.3s ease;
+        }
+        
+        .btn-tincar:hover {
+            background: var(--charcoal);
+            color: white;
+            transform: translateY(-3px);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        }
+        
+        .hero-section {
+            background: linear-gradient(135deg, var(--primary-yellow) 0%, var(--light-yellow) 100%);
+            padding: 4rem 0;
+            text-align: center;
+            color: var(--dark-yellow);
+        }
+        
+        .privacy-content {
+            background: white;
+            border-radius: 20px;
+            padding: 3rem;
+            margin: -50px auto 3rem;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            max-width: 1200px;
+            position: relative;
+            z-index: 1;
+        }
+        
+        .section-title {
+            color: var(--dark-yellow);
+            font-weight: 700;
+            margin-bottom: 2rem;
+            position: relative;
+            padding-bottom: 15px;
+        }
+        
+        .section-title:after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 80px;
+            height: 4px;
+            background: var(--primary-yellow);
+            border-radius: 2px;
+        }
+        
+        .privacy-section {
+            margin-bottom: 3rem;
+        }
+        
+        .privacy-section h3 {
+            color: var(--dark-yellow);
+            font-weight: 600;
+            margin-bottom: 1rem;
+            font-size: 1.3rem;
+        }
+        
+        .privacy-list {
+            list-style: none;
+            padding-left: 0;
+        }
+        
+        .privacy-list li {
+            padding: 0.5rem 0;
+            border-bottom: 1px solid #f0f0f0;
+            display: flex;
+            align-items: flex-start;
+        }
+        
+        .privacy-list li:last-child {
+            border-bottom: none;
+        }
+        
+        .privacy-list li::before {
+            content: "•";
+            color: var(--primary-yellow);
+            font-weight: bold;
+            font-size: 1.5rem;
+            margin-right: 1rem;
+            line-height: 1;
+        }
+        
+        .footer {
+            background: linear-gradient(135deg, var(--light-yellow) 0%, var(--primary-yellow) 100%);
+            padding: 3rem 0 1rem;
+        }
+        
+        .footer-title {
+            color: var(--dark-yellow);
+            font-weight: 700;
+            margin-bottom: 1.5rem;
+            font-size: 1.2rem;
+        }
+        
+        .footer-link {
+            color: var(--dark-yellow);
+            text-decoration: none;
+            transition: all 0.3s ease;
+            display: block;
+            margin-bottom: 0.5rem;
+            font-weight: 500;
+        }
+        
+        .footer-link:hover {
+            color: var(--charcoal);
+            text-decoration: underline;
+            transform: translateX(5px);
+        }
+        
+        .social-icons a {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            margin-right: 15px;
+            color: var(--dark-yellow);
+            font-size: 1.3rem;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.3);
+            transition: all 0.3s ease;
+        }
+        
+        .social-icons a:hover {
+            background: var(--dark-yellow);
+            color: white;
+            transform: translateY(-5px);
+        }
+        
+        .newsletter-input {
+            border: 2px solid rgba(126, 83, 22, 0.3);
+            border-radius: 50px;
+            padding: 0.75rem 1.5rem;
+            background: rgba(255, 255, 255, 0.3);
+            color: var(--dark-yellow);
+        }
+        
+        .newsletter-input::placeholder {
+            color: rgba(126, 83, 22, 0.7);
+        }
+        
+        .last-updated {
+            background: var(--light-yellow);
+            padding: 1rem;
+            border-radius: 10px;
+            margin-bottom: 2rem;
+            text-align: center;
+            font-weight: 600;
+            color: var(--dark-yellow);
+        }
+        
+        .data-types {
+            background: #f8f9fa;
+            padding: 2rem;
+            border-radius: 15px;
+            margin: 2rem 0;
+        }
+        
+        .data-category {
+            margin-bottom: 1.5rem;
+        }
+        
+        .data-category h4 {
+            color: var(--dark-yellow);
+            font-weight: 600;
+            margin-bottom: 1rem;
+        }
+        
+        @media (max-width: 768px) {
+            .privacy-content {
+                padding: 2rem 1rem;
+                margin: -30px auto 2rem;
+            }
+            
+            .hero-section {
+                padding: 2rem 0;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <!-- Header y Navegación -->
+    <header>
+        <nav class="navbar navbar-expand-lg sticky-top">
+            <div class="container">
+                <a class="navbar-brand d-flex align-items-center" href="index.html">
+                    <img src="images/LogoTincarACT.jpg" alt="TinCar Logo" width="40" height="40" class="me-2 rounded-circle">
+                    <span>TinCar</span>
+                </a>
+                
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                
+                <div class="collapse navbar-collapse" id="navbarNav">
+                    <div class="navbar-nav me-auto">
+                        <a class="nav-link" href="index.html">Inicio</a>
+                        <a class="nav-link" href="#">Parqueaderos</a>
+                        <a class="nav-link" href="servicios.html">Servicios</a>
+                        <a class="nav-link" href="betincar.html">Be TinCar</a>
+                        <a class="nav-link" href="nosotros.html">Conócenos</a>
+                    </div>
+                    
+                    <div class="d-flex gap-3">
+                        <a href="servicios.html" class="btn btn-tincar">
+                            Servicios
+                        </a>
+                        <a href="betincar.html" class="btn btn-tincar">
+                            Be TinCar
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </nav>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero-section">
+        <div class="container">
+            <h1 class="display-4 fw-bold mb-3">Política de Privacidad</h1>
+            <p class="lead mb-0">Protegemos y respetamos tu privacidad</p>
+        </div>
+    </section>
+
+    <!-- Contenido de Política de Privacidad -->
+    <div class="container">
+        <div class="privacy-content">
+            <div class="last-updated">
+                <i class="bi bi-calendar-check me-2"></i>
+                Última actualización: 15 de Enero, 2025
+            </div>
+            
+            <div class="text-center mb-5">
+                <h2 class="section-title">PROTECCIÓN DE TUS DATOS PERSONALES</h2>
+                <p class="text-muted">
+                    En TinCar nos comprometemos a proteger tu privacidad y garantizar la seguridad de tus datos personales. 
+                    Esta política explica cómo recopilamos, usamos y protegemos tu información.
+                </p>
+            </div>
+
+            <!-- Sección 1: Información que Recopilamos -->
+            <div class="privacy-section">
+                <h3>1. Información que Recopilamos</h3>
+                <p>
+                    Recopilamos diferentes tipos de información para proporcionarte nuestros servicios:
+                </p>
+                
+                <div class="data-types">
+                    <div class="data-category">
+                        <h4>Información Personal</h4>
+                        <ul class="privacy-list">
+                            <li>Nombre completo y apellidos</li>
+                            <li>Dirección de correo electrónico</li>
+                            <li>Número de teléfono</li>
+                            <li>Documento de identificación</li>
+                            <li>Información de contacto de emergencia</li>
+                        </ul>
+                    </div>
+                    
+                    <div class="data-category">
+                        <h4>Información del Vehículo</h4>
+                        <ul class="privacy-list">
+                            <li>Placa del vehículo</li>
+                            <li>Marca, modelo y color del vehículo</li>
+                            <li>Información del seguro (opcional)</li>
+                        </ul>
+                    </div>
+                    
+                    <div class="data-category">
+                        <h4>Información de Uso</h4>
+                        <ul class="privacy-list">
+                            <li>Historial de reservas y estacionamientos</li>
+                            <li>Preferencias de ubicación</li>
+                            <li>Comportamiento de navegación en nuestra plataforma</li>
+                            <li>Interacciones con nuestro servicio al cliente</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Sección 2: Cómo Usamos tu Información -->
+            <div class="privacy-section">
+                <h3>2. Cómo Usamos tu Información</h3>
+                <p>Utilizamos tu información personal para los siguientes propósitos:</p>
+                <ul class="privacy-list">
+                    <li>Procesar y gestionar tus reservas de estacionamiento</li>
+                    <li>Facilitar los pagos y transacciones</li>
+                    <li>Enviar confirmaciones y recordatorios de reservas</li>
+                    <li>Proporcionar soporte al cliente</li>
+                    <li>Mejorar y personalizar nuestros servicios</li>
+                    <li>Enviar comunicaciones de marketing (solo con tu consentimiento)</li>
+                    <li>Cumplir con obligaciones legales y regulatorias</li>
+                    <li>Prevenir fraudes y asegurar la plataforma</li>
+                </ul>
+            </div>
+
+            <!-- Sección 3: Compartición de Información -->
+            <div class="privacy-section">
+                <h3>3. Compartición de Información</h3>
+                <p>
+                    Podemos compartir tu información en las siguientes circunstancias:
+                </p>
+                <ul class="privacy-list">
+                    <li>
+                        <strong>Con propietarios de estacionamientos:</strong> Información necesaria para gestionar tu reserva
+                    </li>
+                    <li>
+                        <strong>Proveedores de servicios:</strong> Empresas que nos ayudan a operar (procesadores de pago, hosting, etc.)
+                    </li>
+                    <li>
+                        <strong>Cumplimiento legal:</strong> Cuando sea requerido por ley o procedimiento legal
+                    </li>
+                    <li>
+                        <strong>Protección de derechos:</strong> Para proteger nuestros derechos, propiedad o seguridad
+                    </li>
+                    <li>
+                        <strong>Con tu consentimiento:</strong> En cualquier otro caso, solo con tu autorización explícita
+                    </li>
+                </ul>
+            </div>
+
+            <!-- Sección 4: Seguridad de Datos -->
+            <div class="privacy-section">
+                <h3>4. Seguridad de tus Datos</h3>
+                <p>
+                    Implementamos medidas de seguridad técnicas y organizativas apropiadas para proteger tu información personal:
+                </p>
+                <ul class="privacy-list">
+                    <li>Encriptación de datos sensibles</li>
+                    <li>Acceso restringido a información personal</li>
+                    <li>Monitoreo continuo de nuestros sistemas</li>
+                    <li>Protocolos de seguridad actualizados regularmente</li>
+                    <li>Capacitación del personal en protección de datos</li>
+                </ul>
+            </div>
+
+            <!-- Sección 5: Tus Derechos -->
+            <div class="privacy-section">
+                <h3>5. Tus Derechos de Privacidad</h3>
+                <p>Como usuario de TinCar, tienes los siguientes derechos:</p>
+                <ul class="privacy-list">
+                    <li>
+                        <strong>Derecho de acceso:</strong> Solicitar una copia de la información que tenemos sobre ti
+                    </li>
+                    <li>
+                        <strong>Derecho de rectificación:</strong> Corregir información inexacta o incompleta
+                    </li>
+                    <li>
+                        <strong>Derecho de supresión:</strong> Solicitar la eliminación de tus datos personales
+                    </li>
+                    <li>
+                        <strong>Derecho de oposición:</strong> Oponerte al procesamiento de tus datos
+                    </li>
+                    <li>
+                        <strong>Derecho de portabilidad:</strong> Recibir tus datos en formato estructurado
+                    </li>
+                    <li>
+                        <strong>Derecho de retiro del consentimiento:</strong> Revocar tu consentimiento en cualquier momento
+                    </li>
+                </ul>
+            </div>
+
+            <!-- Sección 6: Cookies y Tecnologías Similares -->
+            <div class="privacy-section">
+                <h3>6. Cookies y Tecnologías de Seguimiento</h3>
+                <p>
+                    Utilizamos cookies y tecnologías similares para mejorar tu experiencia en nuestra plataforma:
+                </p>
+                <ul class="privacy-list">
+                    <li>
+                        <strong>Cookies esenciales:</strong> Necesarias para el funcionamiento básico del sitio
+                    </li>
+                    <li>
+                        <strong>Cookies de funcionalidad:</strong> Recuerdan tus preferencias y configuraciones
+                    </li>
+                    <li>
+                        <strong>Cookies analíticas:</strong> Nos ayudan a entender cómo usas nuestra plataforma
+                    </li>
+                    <li>
+                        <strong>Cookies de marketing:</strong> Para mostrar anuncios relevantes (solo con consentimiento)
+                    </li>
+                </ul>
+                <p class="mt-3">
+                    Puedes gestionar tus preferencias de cookies a través de la configuración de tu navegador.
+                </p>
+            </div>
+
+            <!-- Sección 7: Retención de Datos -->
+            <div class="privacy-section">
+                <h3>7. Retención de Datos</h3>
+                <p>
+                    Conservamos tu información personal solo durante el tiempo necesario para cumplir con los 
+                    propósitos para los que fue recopilada, incluyendo el cumplimiento de obligaciones legales, 
+                    contables o de reporte. Los períodos específicos de retención varían según el tipo de datos 
+                    y su propósito.
+                </p>
+            </div>
+
+            <!-- Sección 8: Transferencias Internacionales -->
+            <div class="privacy-section">
+                <h3>8. Transferencias Internacionales de Datos</h3>
+                <p>
+                    Tus datos pueden ser procesados en servidores ubicados fuera de tu país de residencia. 
+                    En tales casos, garantizamos que se implementan las medidas de protección adecuadas de 
+                    acuerdo con las leyes aplicables de protección de datos.
+                </p>
+            </div>
+
+            <!-- Sección 9: Cambios en la Política -->
+            <div class="privacy-section">
+                <h3>9. Cambios en esta Política</h3>
+                <p>
+                    Podemos actualizar esta política de privacidad periódicamente. Te notificaremos sobre 
+                    cambios significativos mediante un aviso prominente en nuestra plataforma o por correo 
+                    electrónico. Te recomendamos revisar esta política regularmente.
+                </p>
+            </div>
+
+            <!-- Sección 10: Contacto -->
+            <div class="privacy-section">
+                <h3>10. Contacto y Ejercicio de Derechos</h3>
+                <p>
+                    Si tienes preguntas sobre esta política de privacidad o deseas ejercer tus derechos de 
+                    protección de datos, puedes contactarnos:
+                </p>
+                <div class="row mt-4">
+                    <div class="col-md-6">
+                        <h5>Oficina de Protección de Datos</h5>
+                        <p class="mb-1">
+                            <i class="bi bi-envelope me-2"></i>
+                            privacidad@tincar.com
+                        </p>
+                        <p class="mb-1">
+                            <i class="bi bi-telephone me-2"></i>
+                            +57 1 234 5678
+                        </p>
+                        <p>
+                            <i class="bi bi-clock me-2"></i>
+                            Lunes a Viernes: 8:00 AM - 6:00 PM
+                        </p>
+                    </div>
+                    <div class="col-md-6">
+                        <h5>Autoridad de Supervisión</h5>
+                        <p>
+                            Si consideras que no hemos manejado adecuadamente tu solicitud, tienes derecho 
+                            a presentar una queja ante la Superintendencia de Industria y Comercio de Colombia.
+                        </p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Enlaces relacionados -->
+            <div class="privacy-section text-center">
+                <h3>Documentos Relacionados</h3>
+                <div class="d-flex justify-content-center gap-3 flex-wrap">
+                    <a href="terminosycondiciones.html" class="btn btn-tincar">
+                        <i class="bi bi-file-text me-2"></i>Términos y Condiciones
+                    </a>
+                    <a href="poliarrendamiento.html" class="btn btn-outline-secondary">
+                        <i class="bi bi-building me-2"></i>Política de Arrendamiento
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-3 col-md-6 mb-4">
+                    <h5 class="footer-title">SOBRE TINCAR</h5>
+                    <p class="mb-3">Guardamos tu tranquilidad en casa.</p>
+                    <a href="nosotros.html" class="footer-link">Descúbrenos</a>
+                </div>
+                
+                <div class="col-lg-3 col-md-6 mb-4">
+                    <h5 class="footer-title">SEMESTRES</h5>
+                    <a href="primero.html" class="footer-link">Primer semestre</a>
+                    <a href="segundo.html" class="footer-link">Segundo semestre</a>
+                    <a href="tercero.html" class="footer-link">Tercer semestre</a>
+                    <a href="cuarto.html" class="footer-link">Cuarto semestre</a>
+                    <a href="quinto.html" class="footer-link">Quinto semestre</a>
+                    <a href="sexto.html" class="footer-link">Sexto semestre</a>
+                </div>
+                
+                <div class="col-lg-3 col-md-6 mb-4">
+                    <h5 class="footer-title">INFORMACIÓN LEGAL</h5>
+                    <a href="privacidad.html" class="footer-link">Política de privacidad</a>
+                    <a href="poliarrendamiento.html" class="footer-link">Política de arrendamiento</a>
+                    <a href="terminosycondiciones.html" class="footer-link">Términos y condiciones</a>
+                </div>
+                
+                <div class="col-lg-3 col-md-6 mb-4">
+                    <h5 class="footer-title">SUSCRÍBETE</h5>
+                    <p class="mb-3">Recibe notificaciones de parqueaderos, ofertas y beneficios de pago.</p>
+                    <div class="mb-3">
+                        <input type="email" class="form-control newsletter-input" placeholder="Correo electrónico">
+                    </div>
+                    <button class="btn btn-tincar w-100">SUSCRIBIRSE</button>
+                </div>
+            </div>
+            
+            <hr class="my-4" style="border-color: rgba(126, 83, 22, 0.3);">
+            
+            <div class="row align-items-center">
+                <div class="col-md-6 mb-3 mb-md-0">
+                    <div class="social-icons text-center text-md-start">
+                        <a href="https://www.instagram.com/tin.car_/?igsh=cTJnOHp3ZmxoZWgy#" aria-label="Instagram">
+                            <i class="bi bi-instagram"></i>
+                        </a>
+                        <a href="https://www.whatsapp.com/?lang=es_LA" aria-label="WhatsApp">
+                            <i class="bi bi-whatsapp"></i>
+                        </a>
+                        <a href="https://github.com/kaparepennn/TinCar.git" aria-label="GitHub">
+                            <i class="bi bi-github"></i>
+                        </a>
+                    </div>
+                </div>
+                <div class="col-md-6 text-center text-md-end">
+                    <p class="mb-0" style="color: var(--dark-yellow);">TinCar © 2025. Tecnología de Bootstrap</p>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Bootstrap JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

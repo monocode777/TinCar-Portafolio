@@ -1,0 +1,495 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Registro Be TinCar</title>
+    <link rel="icon" href="images/LogoTincarACT.jpg">
+    
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    
+    <!-- Bootstrap Icons -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css">
+    
+    <!-- Estilos personalizados -->
+    <style>
+        :root {
+            --primary-yellow: #FFD166;
+            --dark-yellow: #7e5316;
+            --light-yellow: #f4d185;
+            --cream: #f7f5ee;
+            --charcoal: #2D3748;
+        }
+        
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, var(--cream) 0%, #ffffff 100%);
+            color: var(--charcoal);
+            min-height: 100vh;
+        }
+        
+        .navbar {
+            background: linear-gradient(135deg, var(--primary-yellow) 0%, var(--light-yellow) 100%) !important;
+            box-shadow: 0 4px 12px rgba(126, 83, 22, 0.15);
+        }
+        
+        .navbar-brand {
+            font-weight: 700;
+            font-size: 1.5rem;
+            color: var(--dark-yellow) !important;
+        }
+        
+        .nav-link {
+            font-weight: 600;
+            color: var(--dark-yellow) !important;
+            transition: all 0.3s ease;
+            margin: 0 0.5rem;
+        }
+        
+        .nav-link:hover {
+            color: var(--charcoal) !important;
+            transform: translateY(-2px);
+        }
+        
+        .btn-tincar {
+            background: var(--dark-yellow);
+            color: white;
+            border: none;
+            padding: 0.6rem 1.5rem;
+            border-radius: 50px;
+            font-weight: 600;
+            transition: all 0.3s ease;
+        }
+        
+        .btn-tincar:hover {
+            background: var(--charcoal);
+            color: white;
+            transform: translateY(-3px);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        }
+        
+        .btn-outline-tincar {
+            border: 2px solid var(--dark-yellow);
+            color: var(--dark-yellow);
+            background: transparent;
+            padding: 0.6rem 1.5rem;
+            border-radius: 50px;
+            font-weight: 600;
+            transition: all 0.3s ease;
+        }
+        
+        .btn-outline-tincar:hover {
+            background: var(--dark-yellow);
+            color: white;
+            transform: translateY(-3px);
+        }
+        
+        .registration-hero {
+            background: linear-gradient(135deg, var(--primary-yellow) 0%, var(--light-yellow) 100%);
+            padding: 4rem 0;
+            text-align: center;
+            color: var(--dark-yellow);
+            border-radius: 0 0 30px 30px;
+        }
+        
+        .registration-container {
+            max-width: 800px;
+            margin: -50px auto 3rem;
+            position: relative;
+            z-index: 1;
+        }
+        
+        .registration-card {
+            background: white;
+            border-radius: 20px;
+            padding: 3rem;
+            box-shadow: 0 15px 40px rgba(0,0,0,0.1);
+            text-align: center;
+        }
+        
+        .role-selection {
+            margin: 2rem 0;
+        }
+        
+        .role-card {
+            background: #f8f9fa;
+            border: 2px solid transparent;
+            border-radius: 15px;
+            padding: 2rem;
+            margin: 1rem 0;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-align: center;
+        }
+        
+        .role-card:hover {
+            border-color: var(--primary-yellow);
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(255, 209, 102, 0.2);
+        }
+        
+        .role-card.selected {
+            border-color: var(--dark-yellow);
+            background: linear-gradient(135deg, #fff9f0 0%, #ffffff 100%);
+        }
+        
+        .role-icon {
+            font-size: 3rem;
+            color: var(--dark-yellow);
+            margin-bottom: 1rem;
+        }
+        
+        .role-title {
+            color: var(--dark-yellow);
+            font-weight: 700;
+            margin-bottom: 1rem;
+        }
+        
+        .role-description {
+            color: var(--charcoal);
+            margin-bottom: 1.5rem;
+        }
+        
+        .benefits-list {
+            list-style: none;
+            padding: 0;
+            text-align: left;
+        }
+        
+        .benefits-list li {
+            padding: 0.5rem 0;
+            display: flex;
+            align-items: flex-start;
+        }
+        
+        .benefits-list li::before {
+            content: "✓";
+            color: var(--primary-yellow);
+            font-weight: bold;
+            margin-right: 0.5rem;
+        }
+        
+        .footer {
+            background: linear-gradient(135deg, var(--light-yellow) 0%, var(--primary-yellow) 100%);
+            padding: 3rem 0 1rem;
+            margin-top: 3rem;
+        }
+        
+        .footer-title {
+            color: var(--dark-yellow);
+            font-weight: 700;
+            margin-bottom: 1.5rem;
+            font-size: 1.2rem;
+        }
+        
+        .footer-link {
+            color: var(--dark-yellow);
+            text-decoration: none;
+            transition: all 0.3s ease;
+            display: block;
+            margin-bottom: 0.5rem;
+            font-weight: 500;
+        }
+        
+        .footer-link:hover {
+            color: var(--charcoal);
+            text-decoration: underline;
+            transform: translateX(5px);
+        }
+        
+        .social-icons a {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            margin-right: 15px;
+            color: var(--dark-yellow);
+            font-size: 1.3rem;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.3);
+            transition: all 0.3s ease;
+        }
+        
+        .social-icons a:hover {
+            background: var(--dark-yellow);
+            color: white;
+            transform: translateY(-5px);
+        }
+        
+        .continue-btn {
+            background: var(--dark-yellow);
+            color: white;
+            border: none;
+            padding: 1rem 3rem;
+            border-radius: 50px;
+            font-weight: 600;
+            font-size: 1.1rem;
+            transition: all 0.3s ease;
+            margin-top: 2rem;
+        }
+        
+        .continue-btn:hover {
+            background: var(--charcoal);
+            transform: translateY(-3px);
+            box-shadow: 0 8px 20px rgba(0,0,0,0.15);
+        }
+        
+        .continue-btn:disabled {
+            background: #ccc;
+            cursor: not-allowed;
+            transform: none;
+            box-shadow: none;
+        }
+        
+        @media (max-width: 768px) {
+            .registration-card {
+                padding: 2rem 1.5rem;
+                margin: -30px 1rem 2rem;
+            }
+            
+            .registration-hero {
+                padding: 2rem 0;
+            }
+            
+            .role-card {
+                padding: 1.5rem;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <!-- Header y Navegación -->
+    <header>
+        <nav class="navbar navbar-expand-lg sticky-top">
+            <div class="container">
+                <a class="navbar-brand d-flex align-items-center" href="index.html">
+                    <img src="images/LogoTincarACT.jpg" alt="TinCar Logo" width="40" height="40" class="me-2 rounded-circle">
+                    <span>TinCar</span>
+                </a>
+                
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                
+                <div class="collapse navbar-collapse" id="navbarNav">
+                    <div class="navbar-nav me-auto">
+                        <a class="nav-link" href="index.html">Inicio</a>
+                        <a class="nav-link" href="beneficios.html">Beneficios</a>
+                        <a class="nav-link" href="contacto.html">Contacto</a>
+                    </div>
+                    
+                    <div class="d-flex gap-3">
+                        <a href="iniciarsesion.html" class="btn btn-tincar">
+                            Iniciar Sesión
+                        </a>
+                        <a href="registro.html" class="btn btn-outline-tincar">
+                            Registrarse
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </nav>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="registration-hero">
+        <div class="container">
+            <h1 class="display-4 fw-bold mb-3">Únete a Be TinCar</h1>
+            <p class="lead mb-0">Elige cómo quieres disfrutar de nuestros servicios</p>
+        </div>
+    </section>
+
+    <!-- Contenido Principal -->
+    <div class="container registration-container">
+        <div class="registration-card">
+            <div class="text-center mb-5">
+                <h2 style="color: var(--dark-yellow); font-weight: 700; margin-bottom: 1rem;">
+                    ¿Cómo quieres registrarte?
+                </h2>
+                <p class="text-muted">
+                    Selecciona el tipo de cuenta que mejor se adapte a tus necesidades
+                </p>
+            </div>
+
+            <!-- Selección de Rol -->
+            <div class="role-selection">
+                <div class="row">
+                    <!-- Opción Conductor -->
+                    <div class="col-md-6">
+                        <div class="role-card" onclick="selectRole('conductor')" id="conductor-card">
+                            <div class="role-icon">
+                                <i class="bi bi-car-front"></i>
+                            </div>
+                            <h3 class="role-title">Conductor</h3>
+                            <p class="role-description">
+                                Encuentra y reserva el mejor estacionamiento para tu vehículo
+                            </p>
+                            <ul class="benefits-list">
+                                <li>Reserva espacios en minutos</li>
+                                <li>Pagos seguros y rápidos</li>
+                                <li>Reseñas de espacios verificados</li>
+                                <li>Descuentos exclusivos</li>
+                                <li>Soporte 24/7</li>
+                            </ul>
+                        </div>
+                    </div>
+                    
+                    <!-- Opción Arrendador -->
+                    <div class="col-md-6">
+                        <div class="role-card" onclick="selectRole('arrendador')" id="arrendador-card">
+                            <div class="role-icon">
+                                <i class="bi bi-house-door"></i>
+                            </div>
+                            <h3 class="role-title">Arrendador</h3>
+                            <p class="role-description">
+                                Genera ingresos arrendando tu espacio de estacionamiento
+                            </p>
+                            <ul class="benefits-list">
+                                <li>Ingresos pasivos mensuales</li>
+                                <li>Control total de tu disponibilidad</li>
+                                <li>Pagos automáticos y seguros</li>
+                                <li>Seguro de responsabilidad</li>
+                                <li>Panel de gestión fácil de usar</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Botón de Continuar -->
+            <div class="text-center">
+                <button class="continue-btn" id="continue-btn" disabled onclick="continueRegistration()">
+                    Continuar con el Registro
+                </button>
+                <p class="mt-3">
+                    ¿Ya tienes una cuenta? 
+                    <a href="iniciarsesion.html" style="color: var(--dark-yellow); text-decoration: underline; font-weight: 600;">
+                        Inicia sesión aquí
+                    </a>
+                </p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-3 col-md-6 mb-4">
+                    <h5 class="footer-title">SOBRE TINCAR</h5>
+                    <p class="mb-3">Guardamos tu tranquilidad en casa.</p>
+                    <a href="nosotros.html" class="footer-link">Descúbrenos</a>
+                </div>
+                
+                <div class="col-lg-3 col-md-6 mb-4">
+                    <h5 class="footer-title">CONTACTO</h5>
+                    <p class="mb-1">
+                        <i class="bi bi-telephone me-2"></i>
+                        +57 1 555 55 55
+                    </p>
+                    <p class="mb-1">
+                        <i class="bi bi-phone me-2"></i>
+                        +57 1 301 000 0000
+                    </p>
+                    <p class="mb-1">
+                        <i class="bi bi-envelope me-2"></i>
+                        tincarcompanysoft@gmail.com
+                    </p>
+                    <p>
+                        <i class="bi bi-geo-alt me-2"></i>
+                        Cra. 8h #172-20, Bogotá
+                    </p>
+                </div>
+                
+                <div class="col-lg-3 col-md-6 mb-4">
+                    <h5 class="footer-title">POLÍTICAS</h5>
+                    <a href="privacidad.html" class="footer-link">Política de privacidad</a>
+                    <a href="poliarrendamiento.html" class="footer-link">Política de arrendamiento</a>
+                    <a href="terminosycondiciones.html" class="footer-link">Términos y condiciones</a>
+                    <a href="tratamiento.html" class="footer-link">Tratamiento de datos</a>
+                </div>
+                
+                <div class="col-lg-3 col-md-6 mb-4">
+                    <h5 class="footer-title">SÍGUENOS</h5>
+                    <div class="social-icons">
+                        <a href="https://www.instagram.com/tin.car_/?igsh=cTJnOHp3ZmxoZWgy#" aria-label="Instagram">
+                            <i class="bi bi-instagram"></i>
+                        </a>
+                        <a href="https://www.whatsapp.com/?lang=es_LA" aria-label="WhatsApp">
+                            <i class="bi bi-whatsapp"></i>
+                        </a>
+                        <a href="https://github.com/kaparepennn/TinCar.git" aria-label="GitHub">
+                            <i class="bi bi-github"></i>
+                        </a>
+                    </div>
+                </div>
+            </div>
+            
+            <hr class="my-4" style="border-color: rgba(126, 83, 22, 0.3);">
+            
+            <div class="row align-items-center">
+                <div class="col-md-6 mb-3 mb-md-0">
+                    <p class="mb-0" style="color: var(--dark-yellow);">
+                        &copy; 2025 TinCar. Todos los derechos reservados.
+                    </p>
+                </div>
+                <div class="col-md-6 text-center text-md-end">
+                    <p class="mb-0" style="color: var(--dark-yellow);">
+                        Tecnología de Bootstrap
+                    </p>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Bootstrap JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+    
+    <!-- JavaScript para la selección de rol -->
+    <script>
+        let selectedRole = '';
+        
+        function selectRole(role) {
+            selectedRole = role;
+            
+            // Remover selección anterior
+            document.querySelectorAll('.role-card').forEach(card => {
+                card.classList.remove('selected');
+            });
+            
+            // Agregar selección actual
+            document.getElementById(role + '-card').classList.add('selected');
+            
+            // Habilitar botón de continuar
+            document.getElementById('continue-btn').disabled = false;
+        }
+        
+        function continueRegistration() {
+            if (selectedRole) {
+                window.location.href = selectedRole + '.html';
+            }
+        }
+        
+        // Efectos hover mejorados
+        document.querySelectorAll('.role-card').forEach(card => {
+            card.addEventListener('mouseenter', function() {
+                if (!this.classList.contains('selected')) {
+                    this.style.transform = 'translateY(-5px)';
+                    this.style.boxShadow = '0 10px 25px rgba(255, 209, 102, 0.2)';
+                }
+            });
+            
+            card.addEventListener('mouseleave', function() {
+                if (!this.classList.contains('selected')) {
+                    this.style.transform = 'translateY(0)';
+                    this.style.boxShadow = 'none';
+                }
+            });
+        });
+    </script>
+</body>
+</html>

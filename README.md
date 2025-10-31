@@ -1,221 +1,28 @@
-# TinCar-Portafolio
-TinCar - Plataforma de Parqueaderos Inteligentes
-https://images/LogoTincarACT.jpg
+# TinCar
+Guardamos tu tranquilidad en casa.
 
-# Descripción del Proyecto
-TinCar es una plataforma web innovadora que conecta a propietarios de espacios de estacionamiento con conductores que necesitan aparcar sus vehículos. Nuestra misión es "Guardar tu tranquilidad en casa" proporcionando una solución eficiente, segura y conveniente para el estacionamiento vehicular.
+La medida de minimizar la movilidad y congestión en las vías públicas, se dirige a los conductores en necesidad de parquear vehículos en su domicilio, aprovechando esta situación hemos creado una aplicación que permite obtener el servicio y reserva del parqueadero.
 
-# Objetivo Principal
-Facilitar el proceso de encontrar y reservar parqueaderos mediante una plataforma digital intuitiva que beneficie tanto a arrendadores como a conductores.
+**Integrantes:** Edgar Mojica, Karen Palacios, Cristian Rincón, Diego Hernández Altamiranda y Santiago Becerra.
 
-# Características Principales
-Para Conductores
-Búsqueda Inteligente: Encuentra parqueaderos disponibles en tiempo real
+![nosotros](https://github.com/user-attachments/assets/f6f6ae8d-06fc-41f0-b812-767919fb4575)
 
-Reserva Anticipada: Garantiza tu espacio antes de llegar
+**Objetivo general**
+Queremos minimizar la mala movilidad causada por el mal estacionamiento en las vías públicas, va dirigido a los conductores que se vean en la necesidad de parquear en la vía pública por falta de estacionamientos visibles o cercanos, lo haremos a través de una aplicación que permite que las personas que tienen un espacio en su domicilio para poder parquear vehículos ofrezcan este lugar como parqueadero para que los conductores que se encuentren por la zona del arrendador puedan solicitar el servicio y contar con este parqueadero para no afectar las vías y evitar congestiones y quizá multas.
 
-Precios Competitivos: Tarifas especiales y promociones exclusivas
+**Presentación del proyecto y solución propuesta:**
+El proyecto TinCar pretende proporcionar espacios seguros de aparcamiento a los conductores de diferentes tipos de vehículos, y más concretamente se espera lograr un tráfico más fluido y armonioso en diferentes zonas de la ciudad de Bogotá. El proyecto TinCar utilizará diferentes plataformas para su uso, tales como aplicación web y de escritorio, Pero su plataforma base será por medio de aplicativo móvil. En esta plataforma se tendrá como prioridad salvaguardar la información del usuario por medio de diferentes cifrados y softwares.
 
-Seguridad Garantizada: Espacios vigilados las 24 horas
+**Problema y justificación:**
+Uno de los principales focos de estas problemáticas es que existe muchos conductores que usan las vías públicas para parquear sus vehículos, esto nos lleva a reducir el espacio en las vías destinadas para el tránsito de los diferentes medios de transporte.
 
-Programa de Fidelidad: Acumula puntos y canjea beneficios
+**Delimitación:**
+- El proyecto se ejecutará a lo largo de nuestra carrera, en donde cada semestre iremos aportando el aprendizaje e ideas expuestas en clase.​
+- El proyecto se pondrá en servicio en la ciudad de Bogotá D.C. y posteriormente en ciudades aledañas.​
+- El proyecto tendrá una delimitación cuantitativa al finalizar todos los análisis a lo largo de la carrera.
 
-Para Arrendadores
-Genera Ingresos: Monetiza tus espacios de estacionamiento ociosos
-
-Gestión Sencilla: Controla disponibilidad y precios fácilmente
-
-Exposición Garantizada: Llega a más clientes potenciales
-
-Soporte Continuo: Asistencia técnica y comercial permanente
-
-# Tecnologías Utilizadas
-Frontend:
-
-HTML5
-
-CSS3 (Bootstrap 5.3.2)
-
-JavaScript (ES6+)
-
-Bootstrap Icons
-
-Design System:
-
-Bootstrap 5.3.2
-
-Diseño Responsive
-
-Paleta de colores corporativa
-
-Componentes UI personalizados
-
-# Estructura del Proyecto
-text
-tincar-website/
-│
-├── index.html              
-├── servicios.html          
-├── beneficios.html         
-├── contacto.html           
-├── betincar.html           
-├── registro.html           
-├── arrendadorform.html     
-├── conductorform.html      
-├── iniciarsesion.html      
-│
-├── images/                 
-│   ├── LogoTincarACT.jpg
-│   ├── LogoTinCarNegro.JPG
-│   ├── beneficios.jpg
-│   ├── contacto.jpg
-│   ├── factura.jpg
-│   ├── registro.jpg
-│   └── reunion.jpg
-│
-└── css/
-    └── bootstrap.min.css   
-# Design System
-Paleta de Colores
-Amarillo Primario: #FFD166
-
-Amarillo Oscuro: #7e5316
-
-Amarillo Claro: #f4d185
-
-Crema: #f7f5ee
-
-Gris Oscuro: #2D3748
-
-Tipografía
-Fuente Principal: Segoe UI
-
-Pesos Utilizados: 500, 600, 700
-
-Jerarquía Clara: Display, Heading, Body, Small
-
-# Páginas Implementadas
-1. Página Principal (index.html)
-Hero section atractiva
-
-Navegación intuitiva
-
-Llamadas a la acción claras
-
-2. Servicios (servicios.html)
-Carousel de servicios principales
-
-Acceso rápido a funcionalidades
-
-Información organizada
-
-3. Beneficios (beneficios.html)
-Promociones destacadas
-
-Tarjetas de beneficios interactivas
-
-Programa Be TinCar
-
-4. Contacto (contacto.html)
-Formulario de contacto con validación
-
-Información de contacto completa
-
-Diseño responsive
-
-5. Registro (registro.html, arrendadorform.html, conductorform.html)
-Formularios de registro segmentados
-
-Validación en tiempo real
-
-Experiencia de usuario optimizada
-
-# Características Técnicas
-Responsive Design
-Compatible con dispositivos móviles
-
-Grid system de Bootstrap
-
-Breakpoints optimizados
-
-Accesibilidad
-Etiquetas ARIA implementadas
-
-Navegación por teclado
-
-Contraste de colores adecuado
-
-Performance
-Carga optimizada de recursos
-
-Bootstrap CDN para mejor rendimiento
-
-Imágenes comprimidas
-
-# Instalación y Uso
-Requisitos Previos
-Navegador web moderno
-
-Conexión a internet (para CDN de Bootstrap)
-
-Instalación Local
-Clona el repositorio:
-
-bash
-git clone https://github.com/tu-usuario/tincar-website.git
-Navega al directorio del proyecto:
-
-bash
-cd tincar-website
-Abre el archivo index.html en tu navegador:
-
-bash
-open index.html
-# o
-start index.html
-# o simplemente arrastra el archivo al navegador
-📞 Soporte y Contacto
-Información de Contacto
-Teléfono: +57 1 555 55 55
-
-Celular: +57 1 301 000 0000
-
-Email: tincarcompanysoft@gmail.com
-
-Dirección: Cra. 8h #172-20, Bogotá - Colombia
-
-Redes Sociales
-Instagram
-
-WhatsApp
-
-GitHub
-
-# Licencia y Políticas
-Documentación Legal
-Términos y Condiciones
-
-Política de Privacidad
-
-Política de Arrendamiento
-
-Tratamiento de Datos
-
-🤝 Contribución
-Actualmente este es un proyecto académico/educativo. Para sugerencias o colaboraciones, por favor contacta al equipo de desarrollo.
-
-# Roadmap Futuro
-Implementación de backend
-
-Base de datos de usuarios
-
-Sistema de reservas en tiempo real
-
-Aplicación móvil
-
-Integración con pasarelas de pago
-
-Sistema de reviews y calificaciones
-
-# Equipo de Desarrollo
-TinCar Company Soft - Desarrollo y diseño de la plataforma web.
+**Alcance:**
+- Diseño y desarrollo del sitio web y aplicación móvil.​
+- Sistema de pago en línea (PayPal, tarjetas de crédito, entre otras)​
+- Pruebas para garantizar el funcionamiento correcto del sistema en móviles​.
+- Documentación del funcionamiento y mantenimiento de la página y aplicación.​

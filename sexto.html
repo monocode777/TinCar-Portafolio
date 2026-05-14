@@ -425,6 +425,13 @@
             overflow-x: auto;
             margin-top: 20px;
         }
+
+        .code-preview video {
+            width: 100%;
+            display: block;
+            border-radius: 8px;
+            background: #000;
+        }
         
         @media (max-width: 768px) {
             .semester-title {
@@ -528,108 +535,14 @@
                     </div>
                 </div>
 
-                <!-- Vista previa del código -->
+                
                 <div class="mt-4">
-                    <h4 class="mb-3">Estructura Principal del Componente React</h4>
+                    <h4 class="mb-3">Pitch</h4>
                     <div class="code-preview">
-                        <pre><code>import React, { useState } from 'react';
-import { Car, MapPin, DollarSign, Clock, Search, User, Home, 
-         Star, Navigation, Shield, CreditCard, Calendar, 
-         Bell, Settings, ChevronRight, Heart, Menu, 
-         Camera, Check, X } from 'lucide-react';
-
-export default function TinCarMobile() {
-  const [currentScreen, setCurrentScreen] = useState('splash');
-  const [userType, setUserType] = useState('driver');
-
-  const parkingSpots = [
-    { 
-      id: 1, 
-      name: 'Parking Centro', 
-      address: 'Calle 45 #23-15', 
-      price: 3500, 
-      rating: 4.8, 
-      distance: '0.5 km', 
-      image: '🏢' 
-    },
-    { 
-      id: 2, 
-      name: 'Garaje Norte', 
-      address: 'Carrera 7 #89-34', 
-      price: 4000, 
-      rating: 4.9, 
-      distance: '1.2 km', 
-      image: '🏠' 
-    }
-  ];
-
-  // Splash Screen Component
-  const SplashScreen = () => (
-    &lt;div className="h-screen bg-gradient-to-br from-yellow-400 via-yellow-300 to-yellow-500 flex flex-col items-center justify-center p-6"&gt;
-      &lt;div className="bg-black p-8 rounded-full mb-8 shadow-2xl animate-pulse"&gt;
-        &lt;Car className="w-24 h-24 text-yellow-400" /&gt;
-      &lt;/div&gt;
-      &lt;h1 className="text-6xl font-bold text-black mb-4"&gt;TinCar&lt;/h1&gt;
-      &lt;p className="text-xl text-black/80 text-center mb-12"&gt;
-        Estaciona fácil, gana más
-      &lt;/p&gt;
-      &lt;button
-        onClick={() => setCurrentScreen('onboarding')}
-        className="bg-black text-yellow-400 px-12 py-4 rounded-full font-bold text-lg shadow-xl"
-      &gt;
-        Comenzar
-      &lt;/button&gt;
-    &lt;/div&gt;
-  );
-
-  // Home Screen Component
-  const HomeScreen = () => (
-    &lt;div className="h-screen bg-gray-50 flex flex-col"&gt;
-      &lt;!-- Header --&gt;
-      &lt;div className="bg-gradient-to-r from-yellow-400 to-yellow-500 p-6 pb-8 rounded-b-3xl shadow-lg"&gt;
-        &lt;div className="flex justify-between items-center mb-6"&gt;
-          &lt;div&gt;
-            &lt;p className="text-black/70 text-sm"&gt;Hola, Usuario&lt;/p&gt;
-            &lt;h1 className="text-2xl font-bold text-black"&gt;¿Dónde estacionas hoy?&lt;/h1&gt;
-          &lt;/div&gt;
-          &lt;button className="bg-black/10 p-3 rounded-full"&gt;
-            &lt;Bell className="w-6 h-6 text-black" /&gt;
-          &lt;/button&gt;
-        &lt;/div&gt;
-        &lt;!-- Search Bar --&gt;
-        &lt;div className="bg-white rounded-2xl p-4 flex items-center gap-3 shadow-lg"&gt;
-          &lt;Search className="w-5 h-5 text-gray-400" /&gt;
-          &lt;input
-            type="text"
-            placeholder="Buscar ubicación..."
-            className="flex-1 outline-none"
-            onClick={() => setCurrentScreen('search')}
-          /&gt;
-          &lt;button className="bg-yellow-400 p-2 rounded-xl"&gt;
-            &lt;Navigation className="w-5 h-5 text-black" /&gt;
-          &lt;/button&gt;
-        &lt;/div&gt;
-      &lt;/div&gt;
-      &lt;!-- Resto del componente... --&gt;
-    &lt;/div&gt;
-  );
-
-  // Screen Router
-  const screens = {
-    splash: &lt;SplashScreen /&gt;,
-    onboarding: &lt;OnboardingScreen /&gt;,
-    userType: &lt;UserTypeScreen /&gt;,
-    home: &lt;HomeScreen /&gt;,
-    search: &lt;SearchScreen /&gt;,
-    detail: &lt;DetailScreen /&gt;,
-    booking: &lt;BookingScreen /&gt;,
-    confirmation: &lt;ConfirmationScreen /&gt;,
-    bookings: &lt;BookingsScreen /&gt;,
-    profile: &lt;ProfileScreen /&gt;
-  };
-
-  return screens[currentScreen];
-}</code></pre>
+                        <video controls preload="metadata">
+                            <source src="videos/Pitch.mp4" type="video/mp4">
+                            Tu navegador no soporta la reproducción de video.
+                        </video>
                     </div>
                 </div>
 
